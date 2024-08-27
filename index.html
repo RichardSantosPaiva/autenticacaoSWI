@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>teste@gmail.com// senha: 123456</h1>
+  <form action="">
+    <div>
+      <div>
+        <label for="email">Email</label>
+      </div>
+      <input type="email" name="email" placeholder="seu@mail.com" id="email" onchange="validateFields()">
+      <div class="error" id="email-required-error">Email é obrigatório</div>
+      <div class="error" id="email-invalid-error">Email é inválido</div>
+    </div>
+    <div>
+      <div>
+        <label for="password">Senha</label>
+      </div>
+      <input type="password" id="password" placeholder="senha" onchange="validateFields()">
+      <div class="error" id="password-required-error">Senha é obrigatória</div>
+    </div>
+    <div>
+      <button type="button" class="clear" disabled="true" id="recover-password-button">Recuperar Senha</button>
+    </div>
+    <div>
+      <button type="button" class="solid" id="login-button" onclick="login()" disabled="true">Entrar</button>
+    </div>
+    <div>
+      <button type="button" class="outline" onclick="register()">Registrar</button>
+    </div>
+  </form>
+
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+
+  <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDyS75P_JadInRe0h9qmCJ8-XcyIDvnOJs",
+        authDomain: "autenticacao-sw2.firebaseapp.com",
+        projectId: "autenticacao-sw2",
+        storageBucket: "autenticacao-sw2.appspot.com",
+        messagingSenderId: "296497179442",
+        appId: "1:296497179442:web:083b73661afce920fac52b",
+        measurementId: "G-MQG41B089S"
+      };
+
+      // Inicialize o Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      console.log('antes');
+      
+      // Tentativa de login com email e senha
+      firebase.auth().signInWithEmailAndPassword("richardpaiva0101@gmail.com", "123456")
+        .then(response => {
+          console.log('success', response);
+        })
+        .catch(error => {
+          console.log('error', error);
+        });
+        console.log( 'depois')
+  </script>
+</body>
+</html>
